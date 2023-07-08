@@ -1,0 +1,12 @@
+{
+  "name": "copy-url",
+  "description": "Copy page url & title",
+  "version": "1.0.0",
+  "author": "ytakahashi",
+  "devDependencies": {
+    "prettier": "3.0.0"
+  },
+  "scripts": {
+    "prettier": "prettier --write './plugin'"
+  }
+}

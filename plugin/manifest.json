@@ -1,0 +1,13 @@
+{
+  "name": "Copy URL",
+  "description": "Copy page url & title",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": ["activeTab", "scripting", "contextMenus"],
+  "action": {
+    "default_title": "Copy page url & title"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}
