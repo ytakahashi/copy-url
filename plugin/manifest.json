@@ -3,6 +3,11 @@
   "description": "Copy page url & title",
   "version": "1.0",
   "manifest_version": 3,
+  "icons": {
+    "16": "icon/icon16.png",
+    "48": "icon/icon48.png",
+    "128": "icon/icon128.png"
+  },
   "permissions": ["activeTab", "scripting", "contextMenus"],
   "action": {
     "default_title": "Copy page url & title"
