@@ -11,6 +11,12 @@ chrome.runtime.onInstalled.addListener(() => {
   })
   chrome.contextMenus.create({
     parentId: parent,
+    id: 'title',
+    title: 'only Title',
+    contexts: ['all'],
+  })
+  chrome.contextMenus.create({
+    parentId: parent,
     id: 'md',
     title: 'as Markdown',
     contexts: ['all'],
@@ -32,6 +38,13 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
       })
       break
 
+    case 'title':
+      chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        function: title,
+      })
+      break
+
     case 'md':
       chrome.scripting.executeScript({
         target: { tabId: tab.id },
@@ -49,6 +62,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 })
 
 const url = () => navigator.clipboard.writeText(location.href)
+const title = () => navigator.clipboard.writeText(document.title)
 const md = () => navigator.clipboard.writeText(`[${document.title}](${location.href})`)
 const html = () => {
   const body = `<a href="${location.href}">${document.title}</a>`
