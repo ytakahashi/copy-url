@@ -61,7 +61,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   }
 })
 
-chrome.action.onClicked.addListener((tab) => {
+chrome.action.onClicked.addListener(tab => {
   chrome.scripting.executeScript({
     target: { tabId: tab.id },
     function: mdWithConfirm,
