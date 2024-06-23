@@ -61,6 +61,13 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   }
 })
 
+chrome.action.onClicked.addListener((tab) => {
+  chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    function: mdWithConfirm,
+  })
+})
+
 const url = () => navigator.clipboard.writeText(location.href)
 const title = () => navigator.clipboard.writeText(document.title)
 const md = () => navigator.clipboard.writeText(`[${document.title}](${location.href})`)
@@ -71,4 +78,10 @@ const html = () => {
   const item = [new window.ClipboardItem({ 'text/html': blob, 'text/plain': blobPlain })]
 
   navigator.clipboard.write(item)
+}
+
+const mdWithConfirm = () => {
+  const mdStr = `[${document.title}](${location.href})`
+  navigator.clipboard.writeText(mdStr)
+  confirm(mdStr)
 }
