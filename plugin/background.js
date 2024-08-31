@@ -92,7 +92,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 chrome.action.onClicked.addListener(async tab => {
   const result = await chrome.scripting.executeScript({
     target: { tabId: tab.id },
-    function: createMarkdown,
+    function: getMarkdown,
   })
   const value = result[0].result
   chrome.scripting.executeScript({
@@ -105,7 +105,7 @@ chrome.action.onClicked.addListener(async tab => {
 const url = () => navigator.clipboard.writeText(location.href)
 const title = () => navigator.clipboard.writeText(document.title)
 const md = () => navigator.clipboard.writeText(`[${document.title}](${location.href})`)
-const createMarkdown = () => `[${document.title}](${location.href})`
+const getMarkdown = () => `[${document.title}](${location.href})`
 const html = () => {
   const body = `<a href="${location.href}">${document.title}</a>`
   const blob = new Blob([body], { type: 'text/html' })
