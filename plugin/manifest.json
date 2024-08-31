@@ -14,5 +14,12 @@
   },
   "background": {
     "service_worker": "background.js"
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*/*"],
+      "js": ["./background.js"],
+      "css": ["./style.css"]
+    }
+  ]
 }
